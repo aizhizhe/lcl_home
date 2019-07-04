@@ -1,5 +1,12 @@
-import random
+'''
+作业. 1.设计你自己的句子生成器
+3. 获得最优质的的语言
+Q: 这个模型有什么问题？ 你准备如何提升？
 
+Ans:
+'''
+import random
+from ngram import get_p
 choice = random.choice
 def create_grammar(grammar_str, split='=', line_split='\n'):
     grammar = {}
@@ -53,5 +60,13 @@ def generate_n():
     for i in range(20):
         print(generate(create_grammar(npc), target="doctor"))
         print(generate(create_grammar(npc_1), target="intro"))
+def generate_best(gram,target):
+    sendict={}
+    for i in range(20):
+        sen=generate(create_grammar(gram), target=target)
+        sendict[sen]=get_p(sen)
+    return sorted(sendict.items(),key=lambda x:x[1])[-1][0]
+
 if __name__=="__main__":
     generate_n()
+    print(generate_best(npc,"doctor"))
