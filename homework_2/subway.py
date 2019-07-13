@@ -59,11 +59,18 @@ def get_sta_relation(subwaydict):
                 station[sta].append(subwaydict[sub][i + 1])
     return station
 
-
 def shortest_path_first(pathes):
     if len(pathes) <= 1: return pathes
     return sorted(pathes,key=len)[0]
 def search(start, destination, connection_grpah, sort_candidate):
+    if "站" not in start:
+        start+="站"
+    if "站" not in destination:
+        destination+="站"
+    if start not in connection_grpah:
+        return start+"站点不存在"
+    if destination not in connection_grpah:
+        return destination+"站点不存在"
     pathes = [[start]]
     visitied = list()
     while pathes:  # if we find existing pathes
@@ -82,5 +89,5 @@ def search(start, destination, connection_grpah, sort_candidate):
 if __name__=="__main__":
     subwaydict=get_all_substation()
     simple_connection_info=get_sta_relation(subwaydict)
-    des=search('中关村站', '朝阳公园站', simple_connection_info, sort_candidate=shortest_path_first)
+    des=search('中关村站', '草房站', simple_connection_info, sort_candidate=shortest_path_first)
     print(des)
