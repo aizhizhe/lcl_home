@@ -61,7 +61,7 @@ def get_sta_relation(subwaydict):
 
 def shortest_path_first(pathes):
     if len(pathes) <= 1: return pathes
-    return sorted(pathes,key=len)[0]
+    return sorted(pathes,key=len)
 def search(start, destination, connection_grpah, sort_candidate):
     if "站" not in start:
         start+="站"
