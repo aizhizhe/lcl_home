@@ -1,0 +1,16 @@
+Part 5-1: review machine learning
+Why do we use Derivative / Gredient to fit a target function?¶
+Ans:
+because using Derivative can find the best direction to reduce the loss function.
+
+In the words 'Gredient Descent', what's the Gredient and what's the Descent?¶
+Ans:
+The original meaning of the gradient is a vector (vector), which means that the direction derivative of a function at that point takes the maximum value along the direction, that is, the function changes the fastest along the direction (the direction of the gradient) at that point, and the change Maximum rate (module for this gradient)
+The meaning of Descent is that decreasing the loss function to the minimum
+What's the advantages of the 3rd gradient descent method compared to the previous methods?
+Ans:
+Gradient descent is a first-order iterative optimization algorithm for finding the minimum of a function. To find a local minimum of a function using gradient descent, one takes steps proportional to the negative of the gradient (or approximate gradient) of the function at the current point. If, instead, one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as gradient ascent.It can guarantee the correct direction,so it can reduce the loss and optimize the model maximized
+
+Using the simple words to describe: What's the machine leanring.¶
+Ans:
+Machine learning is a subfield of computer science that evolved from the study of pattern recognition and computational learning theory in artificial intelligence
