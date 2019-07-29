@@ -1,0 +1,39 @@
+Part 5: Answer following questions:
+Why do we need dynamic programming? What's the difference of dynamic programming and previous talked search problme?
+1. Can get the global optimal solution;
+2. You can get a family of optimal solutions;
+3. Since the dynamic programming method reflects the connection and characteristics of the dynamic process evolution, the actual knowledge and experience can be used to improve the efficiency of the calculation
+
+Why do we still need dynamic programming? Why not we train a machine learning to fit a function which could get the right answer based on inputs?
+Compared with machine learning, dynamic programming is relatively simple. Only one algorithm is needed to solve the problem. However, machine learning needs some data. 
+First, it is necessary to train and fit a function before it can be used. The steps are cumbersome.
+
+Can you catch up at least 3 problems which could solved by Dynamic Programming?
+1.Longest common subsequence problem,
+2.Matrix multiplication problem,
+3.Convex polygon optimal triangulation problem,
+4.Circuit wiring and other issues
+
+Can you catch up at least 3 problems wich could sloved by Edit Distance?
+1.Text similarity
+2.Text Correction
+3.Determine the similarity of two DNAs
+
+Please summarize the three main features of Dynamic Programming, and make a concise explain for each feature.
+1, the optimal substructure
+The optimal solution of the mother problem contains the optimal solution of its subproblem, which we call the optimal substructure.
+ That is to say, when the sub-problem is optimal, the mother problem can be optimized by the optimization.
+2, sub-questions overlap
+The sub-problem is essentially the same as the parent problem. It is just that the input parameters of the problem are different. 
+It can be called sub-problem overlap. This is the efficient nature of dynamic programming to solve the problem. We can use many sub-questions with the same input. 
+This property of parameters reduces the amount of computation.
+3, the problem exists in the boundary
+The sub-problem does not have sub-problems under certain circumstances. We call this situation a boundary for the problem. For the top-up and bottom-down methods, the boundary is the exit and entrance of the problem.
+4, the sub-questions are independent of each other
+The sub-problems are independent of each other in solving the optimal solution, that is, the solution of the self-problem is irrelevant to other parallel sub-problems. 
+When the parallel sub-problem is solved, when the choice is handed over to the parent problem, it will consider the relationship between the sub-problems, whether to find the maximum or minimum, 
+or to do the relevant operation to get the optimal solution of the parent problem.
+
+What's the disadvantages of Dynamic Programming? (You may need search by yourself in Internet)
+1. There is no uniform standard model;
+2. There is a dimensional disaster when solving numerical methods
