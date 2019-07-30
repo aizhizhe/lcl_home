@@ -36,7 +36,7 @@ class w2v(object):
 			seg=""
 			for temp_sentence in text:
 				temp_sentence=Converter('zh-hans').convert(temp_sentence)
-				seg+=" ".join(jieba.lcut(temp_sentence))
+				seg+=" ".join(jieba.lcut(temp_sentence))+" "
 			f.write(seg+'\n')
 			i=i+1
 			if(i%200==0):
