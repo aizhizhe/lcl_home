@@ -93,8 +93,11 @@ def get_say_sentence(sentence,say):
     return senlist
 
 def get_saywords(sentence,say,per):
-    res2 = re.findall('(?:“|")([\s\S]*?)(?:”|")(?:,|，)?' + "(?:[^，.。,）]*?)" + "茶茶" + "(?:[^，.。,）]*?)" + "说", "“我们都用艺名。”来自广州的茶茶说")
-    res1=re.findall(per+"(?:[^，.。）)]*?)"+say+"(?:[^，.。]*?)"+"(?:，|:|：|,)([\s\S]*?)。","刘春玲说，你是好人。")
+    if sentence[-1] != "。":
+        res1 = re.findall(per + "(?:[^，.。）)]*?)" + say + "(?:[^.。]*?)" + "(?:，|:|：|,)([\s\S]*?)$", sentence)
+    else:
+        res1 = re.findall(per + "(?:[^，.。）)]*?)" + say + "(?:[^.。]*?)" + "(?:，|:|：|,)([\s\S]*?)。", sentence)
+    res2 = re.findall('(?:“|")([\s\S]*?)(?:”|")(?:,|，)?' + "(?:[^，.。,）]*?)" + per + "(?:[^，.。,）]*?)" + say, sentence)
     if res2!=[]:
         return res2[0]
     if res1!=[]:
@@ -224,5 +227,5 @@ if __name__=="__main__":
     # get_all_name("lclnew.txt","name.txt")
     #print(get_dependency_word("刘春玲慷慨激昂的说道,这里没有东西"))
     # res=get_one_name("刘春玲说了什么话")
-    get_one_say_sentence("lclnew.txt","sentences.txt")
-    # print(s)
+    s=get_one_say_sentence("刘春玲说，部队啊。")
+    print(s)
