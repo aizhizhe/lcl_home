@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
@@ -161,7 +161,7 @@ def train_data(fname,stop_file,model_file):
     test_X_vec = G_sentence_w2v().get_sen_vec(test_X, model)
     knn = KNeighborsClassifier()
     logis = LogisticRegression()
-    lr=MultinomialNB()
+    lr=GaussianNB()
     svm=SVC()
     RF=RandomForestClassifier()
     DecisionTree=DecisionTreeClassifier()
