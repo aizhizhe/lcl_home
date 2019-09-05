@@ -7,6 +7,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 import jieba.posseg as pseg
 
 class data_preparing(object):
@@ -135,6 +140,12 @@ def get_datalist(fname,stop_file):
     Y=y2+y1
     return news,Y
 
+def train_predict_evaluation_model(classifier,train_features,train_labels,test_features,test_labels):
+    classifier.fit(train_features,train_labels)
+    predictions=classifier.predict(test_features)
+    res=classification_report(test_labels,predictions)
+    return res,predictions
+
 
 def train_data(fname,stop_file,model_file):
     model = gensim.models.Word2Vec.load(model_file)
@@ -149,12 +160,31 @@ def train_data(fname,stop_file,model_file):
     train_X_vec=G_sentence_w2v().get_sen_vec(train_X,model)
     test_X_vec = G_sentence_w2v().get_sen_vec(test_X, model)
     knn = KNeighborsClassifier()
+    logis = LogisticRegression()
+    lr=MultinomialNB()
+    svm=SVC()
+    RF=RandomForestClassifier()
+    DecisionTree=DecisionTreeClassifier()
+    res,predicions=train_predict_evaluation_model(knn,train_X_vec, train_Y,test_X_vec,test_Y)
+    res1, predicions1 = train_predict_evaluation_model(logis, train_X_vec, train_Y, test_X_vec, test_Y)
+    res2, predicions2 = train_predict_evaluation_model(lr, train_X_vec, train_Y, test_X_vec, test_Y)
+    res3, predicions3 = train_predict_evaluation_model(svm, train_X_vec, train_Y, test_X_vec, test_Y)
+    res4, predicions4 = train_predict_evaluation_model(RF, train_X_vec, train_Y, test_X_vec, test_Y)
+    res5, predicions5 = train_predict_evaluation_model(DecisionTree, train_X_vec, train_Y, test_X_vec, test_Y)
+    print("KNN=====\n",res)
+    print("logistic=====\n", res1)
+    print("bayes=====\n", res2)
+    print("svm=====\n", res3)
+    print("RF=====\n", res4)
+    print("DecisionTree=====\n", res5)
+    # get_possible_one(predicions, test_Y, test_X)
+    # knn = KNeighborsClassifier()
     # 训练knn
-    knn.fit(train_X_vec, train_Y)
-    res_list = knn.predict(test_X_vec)
+    # knn.fit(train_X_vec, train_Y)
+    # res_list = knn.predict(test_X_vec)
     # target_names=list(set(test_Y))
-    print(classification_report(test_Y,res_list))
-    get_possible_one(res_list,test_Y,test_X)
+    # print(classification_report(test_Y,res_list))
+    # get_possible_one(predicions,test_Y,test_X)
 
 
 if __name__=="__main__":
